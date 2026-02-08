@@ -12,8 +12,7 @@ def preprocess(df):
     df.loc[["Sony","ASML"],"LSE"] = np.nan
     df.loc["Mitsubishi UFJ","LSE"] = np.nan
     df.loc["SAP","LSE"] = np.nan
-    # Update JPX SAP
-    df.loc["SAP", "JPX"] = df.loc["SAP", "JPX"] * 16
+    df.loc["SAP", "JPX"] = np.nan
     return df
     
 
