@@ -10,9 +10,8 @@ def preprocess(df):
     
     # Remove secondary/mismatched listings from irrelevant exchanges     
     rules = [
-        ("BP","JPX"),
+        (["SAP","BP"],"JPX"),
         (["Sony","ASML","Mitsubishi UFJ","SAP"],"LSE"),
-        ("SAP","JPX"),
         ("Toyota Motor",["LSE","PAR"])
     ]
     

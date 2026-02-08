@@ -1,7 +1,6 @@
 # Companies of interest
 companies = ["HSBC Holdings plc",
              "Rio Tinto",
-             "BHP Group",
              "Unilever",
              "Carnival Corp",
              "BP",
@@ -18,7 +17,6 @@ companies = ["HSBC Holdings plc",
 
 # Conversion rate of international stocks (ADR); divide by value
 adr = {"HSBC Holdings plc": 5,
-       "BHP Group": 2,
        "BP": 6,
        "GSK": 2,
        "SHEL": 2,

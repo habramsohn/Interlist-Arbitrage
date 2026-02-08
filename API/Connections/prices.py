@@ -25,4 +25,4 @@ def build_df(exchanges, companies):
         prices = pull_prices(exchanges, info, company)
         rows.append(prices)
     df = pd.DataFrame(index=companies, columns=exchanges, data=rows)
-    return(df)
+    return df
