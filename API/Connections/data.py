@@ -1,22 +1,43 @@
 # Companies of interest
-companies = ["HSBC Holdings plc", "AMZN", "GOOG"]
+companies = ["HSBC Holdings plc",
+             "Rio Tinto",
+             "BHP Group",
+             "Unilever",
+             "Carnival Corp",
+             "BP",
+             "Toyota",
+             "Sony",
+             "ASML",
+             "AZN",
+             "GSK",
+             "RELX",
+             "SHEL",
+             "Mitsubishi UFJ",
+             "SAP"]
 
 
-exchanges = ["NYQ","NMS","LSE","HKG","JPX","GER","PAR","AMS","TOR","ASX","NSE"]
+# Conversion rate of international stocks (ADR); divide by value
+adr = {"HSBC Holdings plc": 5,
+       "BHP Group": 2,
+       "BP": 6,
+       "Toyota": 10,
+       "GSK": 2,
+       "SHEL": 2,
+       "TAK": 2,
+       "SNY": 2,
+       "HDFC Bank": 3,
+       "ICICI Bank": 2}
 
 
-# Conversion rate of international stocks; divide by value
-adr = {"HSBC": {"NYSE":5}}
+exchanges = ["NYQ","NMS","LSE","HKG","JPX","GER","PAR","AMS","NSE"]
 
 
 # Currency used by each exchange
 forex = {"NYSE": "USD",
-        "LSE": "GBX",
+        "LSE": "GBP",
         "HKG": "HKD",
         "JPX":"JPY",
         "GER":"EUR",
         "PAR":"EUR",
         "AMS":"EUR",
-        "TOR":"CAD",
-        "ASX":"AUD",
         "NSE":"INR"}

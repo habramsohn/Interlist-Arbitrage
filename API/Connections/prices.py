@@ -1,11 +1,10 @@
 import yfinance as yf
 import pandas as pd
 import math
-from data import companies
-from data import exchanges
 
 
 def get_info(company):
+    # Pulled from Yahoo Finance
     info = yf.Lookup(query=company).stock
     info.columns = info.columns.str.strip()
     info = info[["exchange","regularMarketPrice"]].drop_duplicates("exchange")
@@ -26,6 +25,4 @@ def build_df(exchanges, companies):
         prices = pull_prices(exchanges, info, company)
         rows.append(prices)
     df = pd.DataFrame(index=companies, columns=exchanges, data=rows)
-    df["NYSE"] = df["NYQ"].fillna(df["NMS"])
-    df.drop(["NYQ","NMS"],axis=1,inplace=True)
     return(df)

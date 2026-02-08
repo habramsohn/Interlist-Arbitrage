@@ -1,16 +1,16 @@
 import requests
-from data import forex
 
 
-def url(forex):
+def define_currencies(forex):
     currencies = ",".join(list(forex.values()))
+    # Daily updates
     url = f"https://api.frankfurter.dev/v1/latest?base=USD&symbols={currencies}"
     return url
 
 
-def pull(url):
-    response = requests.get(url)
-    return response, response.status_code
-    
-
-pull(url(forex))
+def pull(forex):
+    url = define_currencies(forex)
+    response = requests.get(url).json()
+    rates = response["rates"]
+    rates["USD"] = 1
+    return rates
