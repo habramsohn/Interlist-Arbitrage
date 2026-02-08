@@ -7,13 +7,17 @@ def preprocess(df):
     df.drop(["NYQ","NMS"],axis=1,inplace=True)
     # Pence > Pound
     df["LSE"] = df["LSE"] * .01
-    # Remove secondary/mismatched listings from irrelevant exchanges 
-    df.loc["BP","JPX"] = np.nan
-    df.loc[["Sony","ASML"],"LSE"] = np.nan
-    df.loc["Mitsubishi UFJ","LSE"] = np.nan
-    df.loc["SAP","LSE"] = np.nan
-    df.loc["SAP", "JPX"] = np.nan
-    df.loc["Toyota Motor",["LSE","PAR"]] = np.nan
+    
+    # Remove secondary/mismatched listings from irrelevant exchanges     
+    rules = [
+        ("BP","JPX"),
+        (["Sony","ASML","Mitsubishi UFJ","SAP"],"LSE"),
+        ("SAP","JPX"),
+        ("Toyota Motor",["LSE","PAR"])
+    ]
+    
+    for rule in rules:
+        df.loc[rule] = np.nan
     return df
     
 
