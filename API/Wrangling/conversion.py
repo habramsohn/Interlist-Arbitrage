@@ -17,4 +17,5 @@ def convert(forex, rates, df):
     applications = match_rates(forex, rates)
     converted_df = apply(df, applications)
     converted_df['int_mean'] = df.drop(columns=['NYSE']).mean(axis=1, skipna=True)
+    converted_df['difference'] = df["NYSE"] - df["int_mean"]
     return converted_df

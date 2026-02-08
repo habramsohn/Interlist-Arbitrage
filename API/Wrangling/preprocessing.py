@@ -13,6 +13,7 @@ def preprocess(df):
     df.loc["Mitsubishi UFJ","LSE"] = np.nan
     df.loc["SAP","LSE"] = np.nan
     df.loc["SAP", "JPX"] = np.nan
+    df.loc["Toyota Motor",["LSE","PAR"]] = np.nan
     return df
     
 
