@@ -6,7 +6,6 @@ import math
 def get_info(company):
     # Pulled from Yahoo Finance
     info = yf.Lookup(query=company).stock
-    info.columns = info.columns.str.strip()
     info = info[["exchange","regularMarketPrice"]].drop_duplicates("exchange")
     info = {i[0]:i[1] for i in info.itertuples(index=False)}
     return info
