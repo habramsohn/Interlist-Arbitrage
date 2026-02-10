@@ -12,11 +12,16 @@ def apply(df, applications):
         df[col] = df[col] / denominator  
     return df  
         
+
+def calculate(df, exch):
+    df['int_mean'] = df.drop(columns=['NYSE']).mean(axis=1, skipna=True)
+    df['difference'] = df["NYSE"] - df["int_mean"]
+    df['perc_diff'] = (df["difference"] / df.iloc[:,0:len(exch)].mean(axis=1, skipna=True)) * 100
+    return df
+
     
 def convert(forex, rates, df):
     applications, exch = match_rates(forex, rates)
     converted_df = apply(df, applications)
-    converted_df['int_mean'] = df.drop(columns=['NYSE']).mean(axis=1, skipna=True)
-    converted_df['difference'] = df["NYSE"] - df["int_mean"]
-    converted_df['perc_diff'] = df["difference"] / df.iloc[:,0:len(exch)].mean(axis=1, skipna=True)
-    return converted_df
+    calculated_df = calculate(converted_df, exch)
+    return calculated_df
