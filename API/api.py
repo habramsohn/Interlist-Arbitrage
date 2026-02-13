@@ -1,21 +1,17 @@
-from Connections.prices import build_df
-from Connections.forex import pull
-from Connections.data import companies, exchanges, forex, adr
-from Wrangling.preprocessing import processing
-from Wrangling.conversion import convert
-from Wrangling.dates import add_date
-from timeit import default_timer as timer
+from .Connections.prices import build_df
+from .Connections.forex import pull
+from .Connections.data import companies, exchanges, forex, adr
+from .Wrangling.preprocessing import processing
+from .Wrangling.conversion import convert
+from .Wrangling.dates import add_date
 
 def main(exchanges, companies):
-    start = timer()
-    df = build_df(exchanges, companies)
-    processing(df, adr)
+    init = build_df(exchanges, companies)
+    processing(init, adr)
     rates = pull(forex)
-    calculated_df = convert(forex, rates, df)
-    date_df = add_date(calculated_df)
-    end = timer()
-    print(date_df)
-    print(end - start)
+    calculated_df = convert(forex, rates, init)
+    df = add_date(calculated_df)   
+    return df
 
 if __name__ == "__main__":
-    main(exchanges, companies)
+    df = main(exchanges, companies)    

@@ -15,8 +15,7 @@ def apply(df, applications):
 
 def calculate(df, exch):
     df['int_mean'] = df.drop(columns=['NYSE']).mean(axis=1, skipna=True)
-    df['difference'] = df["NYSE"] - df["int_mean"]
-    df['perc_diff'] = (df["difference"] / df.iloc[:,0:len(exch)].mean(axis=1, skipna=True)) * 100
+    df['perc_diff'] = ((df["NYSE"] - df["int_mean"]) / df.mean(axis=1, skipna=True)) * 100
     return df
 
     
