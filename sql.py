@@ -10,6 +10,8 @@ load_dotenv(override=True)
 
 exchanges = [ex for ex in exchanges if ex not in ["NYQ","NMS"]]
 
+# Note: Need a .env file configured with the below variables to run
+
 DB_USERNAME = os.getenv("DB_USERNAME")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
 DB_NAME = os.getenv("DB_NAME")
@@ -26,7 +28,7 @@ def check_existing(engine):
     table = Table(
         'tickerstorage',
         metadata,
-        Column('index', String(30)),
+        Column('Company', String(30)),
         Column('id', Float, primary_key=True, autoincrement=True),
         *columns,
         Column("NYSE", Float),

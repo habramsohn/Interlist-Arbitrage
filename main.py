@@ -31,10 +31,11 @@ def data(exchanges, companies):
     calculated_df = convert(forex, rates, init)
     df = add_date(calculated_df)   
     df.reset_index(inplace=True)
+    df.rename(columns={"index":"Company"}, inplace=True)
     return df
 
 if __name__ == "__main__":
     if time_check():
-        exit()
+       exit()
     df = data(exchanges, companies)
     insert_data(df)
